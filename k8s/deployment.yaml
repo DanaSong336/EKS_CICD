@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+  labels:
+    app: my-app
+spec:
+  replicas: 3  # 배포할 파드의 개수
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app-container
+        image: danasong336/my-app:latest  # Docker Hub 이미지
+        ports:
+        - containerPort: 80  # 컨테이너에서 열어줄 포트
