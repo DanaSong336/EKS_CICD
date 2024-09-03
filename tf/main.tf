@@ -135,6 +135,10 @@ resource "aws_instance" "jenkins" {
   subnet_id              = aws_subnet.subnet_1.id
   vpc_security_group_ids = [aws_security_group.jenkins_sg.id]
 
+  root_block_device {
+    volume_size = 20   # 루트 EBS 볼륨의 크기를 20GB로 설정합니다.
+  }
+  
   tags = {
     Name = "JenkinsServer"
   }
